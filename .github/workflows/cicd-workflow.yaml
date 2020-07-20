@@ -1,10 +1,24 @@
 name: Demo
-on: [push]
+on:
+  push:
+    branches:
+      - '*'
 
 jobs:
-  demo_job:
-    name: Example job
+  demo-job:
+    name: 'Build job'
     runs-on: ubuntu-latest
     steps:
-      - name: Says hello
-        run: echo "Hello world"
+      - name: 'Start build job'
+        run: |
+        echo "Hello world"
+
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+
+      - name: 'Setup Java'
+        uses: actions/setup-java@v1
+
+      - name: 'Check Java Version'
+        run: |
+          java --version
